@@ -3,12 +3,10 @@
 
 # branch:slave
 由于本地重新配置了git用户，无法上传到本项目的master分支，只好上传到salve分支.
-具体在VS Code终端下执行 
+具体在VS Code终端下执行即可
 
 ```
   git add .
   Git commit -m "Upload all files"
   git push origin master：slave
 ```
-
-即可 
