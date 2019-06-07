@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>独立音乐</title>
+</head>
+<body>
+    <h1>song</h1>
+    <table border="1">
+        <tr>
+            <th>音乐编号</th>
+            <th>歌曲名</th>
+            <th>发行日期</th>
+            <th>录入日期</th>
+            <th>作词</th>
+            <th>作曲</th>
+            <th>歌手</th>
+            <th>时长</th>
+            <th>曲风编号</th>
+        </tr>
+
+        {volist name="data" id="value"}
+            <tr>
+                <th>{$value.SNO}</th>
+                <th>{$value.SNAME}</th>
+                <th>{$value.SRELEASE}</th>
+                <th>{$value.SRECORD}</th>
+                <th>{$value.SLYRICS}</th>
+                <th>{$value.SCOMPOSITION}</th>
+                <th>{$value.SINGER}</th>
+                <th>{$value.SLENGTH}</th>
+                <th>{$value.STYLENO}</th>
+            </tr>
+        {/volist}
+    </table>
+</body>
+</html>

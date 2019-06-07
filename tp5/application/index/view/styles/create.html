@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加曲风</title>
+    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css">
+    <script src="__STATIC__/bootstrap/js/jquery.min.js"></script>
+    <script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <button class="btn btn-success">添加曲风</button>
+                <a href="/songs" class="btn btn-danger">查看曲风表</a>
+            </div>
+            <div class="panel-body">
+                <form action="/styles" method="post">
+                    <div class="form-group">
+                        <label for="">曲风类型</label>
+                        <input placeholder="请输入曲风类型" type="text" name="STYLETYPE"
+                          class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">诞生国度</label>
+                        <input placeholder="请输入诞生国度" type="text" name="STYLECOUNTRY"
+                        class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">诞生时期</label>
+                        <input placeholder="请输入诞生时期" type="text" name="STYLEBORN"
+                        class="form-control" id="">
+                    </div>
+
+                    <br /><br />
+
+                    <div class="form-group">
+                        <input type="submit" value="提交" class="btn btn-success">
+                        <input type="reset" value="重置" class="btn btn-danger">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

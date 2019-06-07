@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户</title>
+    <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.min.css">
+    <script src="./static/bootstrap/js/jquery.min.js"></script>
+    <script src="./static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <button class="btn btn-success">用户数据表</button>
+                <a href="/Users/create" class="btn btn-danger">添加用户</a>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-hover">
+                    <th>UNO</th>
+                    <th>UYPE</th>
+                    <th>UNAME</th>
+                    <th>UPASSWORD</th>
+                    <th>修改</th>
+                    <th>删除</th>
+                    
+                    {volist name="data" id="value"}
+                    <tr>
+                        <td>{$value.UNO}</td>
+                        <td>{$value.UYPE}</td>
+                        <td>{$value.UNAME}</td>
+                        <td>{$value.UPASSWORD}</td>
+                        <td><a href="/users/{$value.UNO}/edit">修改</a></td>
+                        <td>
+                            <form action="/users/{$value.UNO}" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <button>删除</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {/volist}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

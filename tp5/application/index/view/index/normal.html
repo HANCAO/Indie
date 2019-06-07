@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐数据库</title>
+    <link rel="stylesheet" href="./static/bootstrap/css/bootstrap.min.css">
+    <script src="./static/bootstrap/js/jquery.min.js"></script>
+    <script src="./static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <label>歌曲数据表</label>
+            </div>
+
+            <nav class="navbar navbar-light bg-light">
+                <form class="form-inline navbar-brand">
+                    <select class="form-control custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <option selected>分类筛选</option>
+                        <option value="1">歌曲名</option>
+                        <option value="2">发行时间</option>
+                        <option value="3">录入时间</option>
+                        <option value="4">作词</option>
+                        <option value="5">作曲</option>
+                        <option value="6">歌手</option>
+                        <option value="7">时长</option>
+                        <option value="8">曲风编号</option>
+                    </select>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+
+            <div class="panel-body">
+                <table class="table table-bordered table-hover">
+                    <th>歌曲编号</th>
+                    <th>歌曲名</th>
+                    <th>发行时间</th>
+                    <th>录入时间</th>
+                    <th>作词</th>
+                    <th>作曲</th>
+                    <th>歌手</th>
+                    <th>时长</th>
+                    <th>曲风编号</th>
+
+	                {volist name="data_song" id="value_song"}
+	                <tr>
+	                    <td>{$value_song.SNO}</td>
+	                    <td>{$value_song.SNAME}</td>
+	                    <td>{$value_song.SRELEASE}</td>
+	                    <td>{$value_song.SRECORD}</td>
+	                    <td>{$value_song.SLYRICS}</td>
+	                    <td>{$value_song.SCOMPOSITION}</td>
+	                    <td>{$value_song.SINGER}</td>
+	                    <td>{$value_song.SLENGTH}</td>
+	                    <td>{$value_song.STYLENO}</td>
+	                </tr>
+	                {/volist}
+                </table>
+                
+                <br />
+
+                {$data_song->render()}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <label>曲风数据表</label>
+                </div>
+
+                <nav class="navbar navbar-light bg-light">
+                    <form class="form-inline navbar-brand">
+                        <select class="form-control custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option selected>分类筛选</option>
+                            <option value="1">曲风编号</option>
+                            <option value="2">曲风类型</option>
+                            <option value="3">诞生国度</option>
+                            <option value="4">诞生时期</option>
+                        </select>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required="required">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </nav>
+
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover">
+                        <th>曲风编号</th>
+                        <th>曲风类型</th>
+                        <th>诞生国度</th>
+                        <th>诞生时期</th>
+    
+                        {volist name="data_style" id="value_style"}
+                        <tr>
+                            <td>{$value_style.STYLENO}</td>
+                            <td>{$value_style.STYLETYPE}</td>
+                            <td>{$value_style.STYLECOUNTRY}</td>
+                            <td>{$value_style.STYLEBORN}</td>
+                        </tr>
+                        {/volist}
+                    </table>
+
+                    {$data_style->render()}
+                </div>
+            </div>
+        </div>
+</body>
+</html>

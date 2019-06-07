@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐数据库</title>
+    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css">
+    <script src="__STATIC__/bootstrap/js/jquery.min.js"></script>
+    <script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <label>曲风数据表</label>
+                    <a href="/normal" class="btn btn-primary" style="float:right">返回</a>
+                </div>
+
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover">
+                        <th>曲风编号</th>
+                        <th>曲风类型</th>
+                        <th>诞生国度</th>
+                        <th>诞生时期</th>
+    
+                        {volist name="result_style" id="value_style"}
+                        <tr>
+                            <td>{$value_style.STYLENO}</td>
+                            <td>{$value_style.STYLETYPE}</td>
+                            <td>{$value_style.STYLECOUNTRY}</td>
+                            <td>{$value_style.STYLEBORN}</td>
+                        </tr>
+                        {/volist}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>

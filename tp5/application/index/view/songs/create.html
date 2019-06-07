@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加歌曲</title>
+    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css">
+    <script src="__STATIC__/bootstrap/js/jquery.min.js"></script>
+    <script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <button class="btn btn-success">添加歌曲</button>
+                <a href="/songs" class="btn btn-danger">查看歌曲表</a>
+            </div>
+            <div class="panel-body">
+                <form action="/songs" method="post">
+                    <div class="form-group">
+                        <label for="">歌曲名</label>
+                        <input placeholder="请输入歌曲名" type="text" name="SNAME"
+                          class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">发行时间</label>
+                        <input placeholder="请输入发行时间" type="text" name="SRELEASE"
+                        class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">录入时间</label>
+                        <input placeholder="请输入录入时间" type="text" name="SRECORD"
+                        class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">作词</label>
+                        <input placeholder="请输入作词者" type="text" name="SLYRICS"
+                        class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">作曲</label>
+                        <input placeholder="请输入作曲者" type="text" name="SCOMPOSITION"
+                        class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">歌手</label>
+                        <input placeholder="请输入歌手" type="text" name="SINGER"
+                        class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">时长</label>
+                        <input placeholder="请输入时长" type="text" name="SLENGTH"
+                        class="form-control" id="">
+                    </div>
+
+                    <div>
+                        <label for="form-group">曲风编号</label>
+                        <input placeholder="请输入曲风编号" type="number" name="STYLENO"
+                        class="form-control" id="">
+                    </div>
+
+                    <br /><br />
+
+                    <div class="form-group">
+                        <input type="submit" value="提交" class="btn btn-success">
+                        <input type="reset" value="重置" class="btn btn-danger">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐数据库</title>
+    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css">
+    <script src="__STATIC__/bootstrap/js/jquery.min.js"></script>
+    <script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <label>歌曲数据表</label>
+                <a href="/normal" class="btn btn-primary" style="float:right">返回</a>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-bordered table-hover">
+                    <th>歌曲编号</th>
+                    <th>歌曲名</th>
+                    <th>发行时间</th>
+                    <th>录入时间</th>
+                    <th>作词</th>
+                    <th>作曲</th>
+                    <th>歌手</th>
+                    <th>时长</th>
+                    <th>曲风编号</th>
+
+	                {volist name="result_search" id="value_song"}
+	                <tr>
+	                    <td>{$value_song.SNO}</td>
+	                    <td>{$value_song.SNAME}</td>
+	                    <td>{$value_song.SRELEASE}</td>
+	                    <td>{$value_song.SRECORD}</td>
+	                    <td>{$value_song.SLYRICS}</td>
+	                    <td>{$value_song.SCOMPOSITION}</td>
+	                    <td>{$value_song.SINGER}</td>
+	                    <td>{$value_song.SLENGTH}</td>
+	                    <td>{$value_song.STYLENO}</td>
+	                </tr>
+	                {/volist}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
