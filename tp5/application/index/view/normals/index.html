@@ -11,6 +11,43 @@
 </head>
 <body>
     <div class="container">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" style="width: 100%" data-toggle="modal"data-target="#exampleModalLong">
+            曲风录入次数最多的歌曲TOP3
+        </button>
+      
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Independent Music</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover">
+                                <th>曲风类型</th>
+                                <th>录入次数</th>
+            
+                                {volist name="data_bang" id="value_song"}
+                                <tr class="data">
+                                    <td>{$value_song.STYLETYPE}</td>
+                                    <td>{$value_song.COUNT}</td>
+                                </tr>
+                                {/volist}
+                            </table>
+                        </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+        
+
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <label>歌曲数据表</label>
@@ -87,7 +124,7 @@
 
                 {$data_song->render()}
 
-                <nav aria-label="Page navigation example">
+                <!-- <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -95,52 +132,52 @@
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                   </ul>
-                </nav>
+                </nav> -->
                 
             </div>
         </div>
     </div>
 
     <div class="container">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <label>曲风数据表</label>
-                </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <label>曲风数据表</label>
+            </div>
 
-                <nav class="form-inline navbar navbar-light bg-light">
-                    <form class="form-inline navbar-brand"  enctype="multipart/form-data" method="POST" action="/index/search_style">
-                        <select class="form-control custom-select my-1 mr-sm-2"  name="myselectstyle" id="myselectstyle">
-                            <option selected disabled>分类筛选</option>
-                            <option value="STYLENO" selected = "selected">曲风编号</option>
-                            <option value="STYLETYPE">曲风类型</option>
-                            <option value="STYLECOUNTRY">诞生国度</option>
-                            <option value="STYLEBORN">诞生时期</option>
-                        </select>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  name="keywordsstyle" id="keywordsstyle" required="required" >
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </nav>
+            <nav class="form-inline navbar navbar-light bg-light">
+                <form class="form-inline navbar-brand"  enctype="multipart/form-data" method="POST" action="/index/search_style">
+                    <select class="form-control custom-select my-1 mr-sm-2"  name="myselectstyle" id="myselectstyle">
+                        <option selected disabled>分类筛选</option>
+                        <option value="STYLENO" selected = "selected">曲风编号</option>
+                        <option value="STYLETYPE">曲风类型</option>
+                        <option value="STYLECOUNTRY">诞生国度</option>
+                        <option value="STYLEBORN">诞生时期</option>
+                    </select>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  name="keywordsstyle" id="keywordsstyle" required="required" >
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
 
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <th>曲风编号</th>
-                        <th>曲风类型</th>
-                        <th>诞生国度</th>
-                        <th>诞生时期</th>
-    
-                        {volist name="data_style" id="value_style"}
-                        <tr>
-                            <td>{$value_style.STYLENO}</td>
-                            <td>{$value_style.STYLETYPE}</td>
-                            <td>{$value_style.STYLECOUNTRY}</td>
-                            <td>{$value_style.STYLEBORN}</td>
-                        </tr>
-                        {/volist}
-                    </table>
+            <div class="panel-body">
+                <table class="table table-bordered table-hover">
+                    <th>曲风编号</th>
+                    <th>曲风类型</th>
+                    <th>诞生国度</th>
+                    <th>诞生时期</th>
 
-                    {$data_style->render()}
-                </div>
+                    {volist name="data_style" id="value_style"}
+                    <tr>
+                        <td>{$value_style.STYLENO}</td>
+                        <td>{$value_style.STYLETYPE}</td>
+                        <td>{$value_style.STYLECOUNTRY}</td>
+                        <td>{$value_style.STYLEBORN}</td>
+                    </tr>
+                    {/volist}
+                </table>
+
+                {$data_style->render()}
             </div>
         </div>
+    </div>
 </body>
 </html>

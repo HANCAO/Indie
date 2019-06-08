@@ -26,9 +26,19 @@ class Normals extends Controller
         //查询曲风表
         $data_style=Db::table('style')->paginate(3);
 
+        //录入次数最多的曲风 & 最新录入该曲风的歌曲
+        $song=new Song();
+
+        $data_bang=$song->query("select * from(
+            select st.styletype,count(so.styleno) count from song so,style st where so.styleno=st.styleno group by st.styletype order by count(so.styleno) desc
+            ) where rownum<=3");
+
+        
+
         //分配数据给页面
         $this->assign('data_song',$data_song);
         $this->assign('data_style',$data_style);
+        $this->assign('data_bang',$data_bang);
 
         return view();
     }
