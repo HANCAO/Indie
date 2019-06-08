@@ -53,10 +53,13 @@ class Songs extends Controller
     {
         //处理增加过来的数据插入到数据库
         $data=input("post.");
-        //dump($data);
+        //dump($data['SRELEASE']);
 
-        $code=Db::execute("insert into song values(seq_songId.NEXTVAL,:SNAME,:SRELEASE,:SRECORD,
+        $code=Db::execute("insert into song values
+        (seq_songId.NEXTVAL,:SNAME,
+        to_date(:SRELEASE,'yyyy-MM-dd'),to_date(:SRECORD,'yyyy-MM-dd'),
         :SLYRICS,:SCOMPOSITION,:SINGER,:SLENGTH,:STYLENO)",$data);
+
 
         if($code){
             $this->success("添加成功",'/songs');
@@ -106,7 +109,7 @@ class Songs extends Controller
         $data=Request::instance()->except('_method');
 
         //执行数据库更新操作
-        $code=Db::execute("update song set SNAME=:SNAME,SRELEASE=:SRELEASE,SRECORD=:SRECORD,SLYRICS=:SLYRICS,
+        $code=Db::execute("update song set SNAME=:SNAME,SRELEASE=to_date(:SRELEASE,'yyyy-MM-dd'),SRECORD=to_date(:SRECORD,'yyyy-MM-dd'),SLYRICS=:SLYRICS,
         SCOMPOSITION=:SCOMPOSITION,SINGER=:SINGER,SLENGTH=:SLENGTH,STYLENO=:STYLENO where SNO=:id",$data);
 
         if($code){

@@ -21,18 +21,18 @@
                     <div class="form-group">
                         <label for="">歌曲名</label>
                         <input placeholder="请输入歌曲名" type="text" name="SNAME"
-                          class="form-control" id="">
+                          class="form-control" id="" required="required">
                     </div>
 
                     <div>
                         <label for="form-group">发行时间</label>
-                        <input placeholder="请输入发行时间" type="text" name="SRELEASE"
+                        <input placeholder="请输入发行时间" type="date" name="SRELEASE"
                         class="form-control" id="">
                     </div>
 
                     <div>
                         <label for="form-group">录入时间</label>
-                        <input placeholder="请输入录入时间" type="text" name="SRECORD"
+                        <input placeholder="请输入录入时间" type="date" name="SRECORD"
                         class="form-control" id="">
                     </div>
 
@@ -57,7 +57,7 @@
                     <div>
                         <label for="form-group">时长</label>
                         <input placeholder="请输入时长" type="text" name="SLENGTH"
-                        class="form-control" id="">
+                            class="form-control" id=""onkeyup="value=value.replace(/[^\d.]/g,'')" >
                     </div>
 
                     <div>
