@@ -18,13 +18,13 @@ class Songs extends Controller
     {
         //way②
         //$data_song=Db::query("select * from song");
-        $data_song=Db::table('song')->paginate(3);
+        $data_song=Db::table('song')->order("SNO")->paginate(3);
 
         //分配数据给页面
         $this->assign('data_song',$data_song);
 
         //$data_style=Db::query("select * from style");
-        $data_style=Db::table('style')->paginate(3);
+        $data_style=Db::table('style')->order("STYLENO")->paginate(3);
 
         $this->assign('data_style',$data_style);
 
@@ -57,14 +57,15 @@ class Songs extends Controller
 
         try{
 
-            $code=Db::execute("insert into song values(seq_songId.NEXTVAL,:SNAME,:SRELEASE,:SRECORD,
+            $code=Db::execute("insert into song values(seq_songId.NEXTVAL,:SNAME,
+            to_date(:SRELEASE,'yyyy-MM-dd'),to_date(:SRECORD,'yyyy-MM-dd'),
             :SLYRICS,:SCOMPOSITION,:SINGER,:SLENGTH,:STYLENO)",$data);
 
-            // if($code){
-            //     $this->success("添加成功",'/songs');
-            // }else{
-            //     $this->error("添加失败");
-            // }
+            if($code){
+                $this->success("添加成功",'/songs');
+            }else{
+                $this->error("添加失败");
+            }
 
         }catch(\Exception $e){
             //dump($e->getMessage());

@@ -46,7 +46,7 @@ class Styles extends Controller
         $data=input("post.");
         //dump($data);
 
-        $code=Db::execute("insert into style values(seq_songId.NEXTVAL,:STYLETYPE,:STYLECOUNTRY,:STYLEBORN)",$data);
+        $code=Db::execute("insert into style values(seq_songId.NEXTVAL,:STYLETYPE,:STYLECOUNTRY,to_date(:STYLEBORN,'yyyy-MM-dd'))",$data);
 
         if($code){
             $this->success("添加成功",'/songs');
@@ -96,7 +96,7 @@ class Styles extends Controller
         $data=Request::instance()->except('_method');
 
         //执行数据库更新操作
-        $code=Db::execute("update style set STYLETYPE=:STYLETYPE,STYLECOUNTRY=:STYLECOUNTRY,STYLEBORN=:STYLEBORN where STYLENO=:id",$data);
+        $code=Db::execute("update style set STYLETYPE=:STYLETYPE,STYLECOUNTRY=:STYLECOUNTRY,STYLEBORN=to_date(:STYLEBORN,'yyyy-MM-dd') where STYLENO=:id",$data);
 
         if($code){
             $this->success("数据更新成功",'/songs');
