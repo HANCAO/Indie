@@ -55,13 +55,28 @@ class Songs extends Controller
         $data=input("post.");
         //dump($data);
 
-        $code=Db::execute("insert into song values(seq_songId.NEXTVAL,:SNAME,:SRELEASE,:SRECORD,
-        :SLYRICS,:SCOMPOSITION,:SINGER,:SLENGTH,:STYLENO)",$data);
+        try{
 
-        if($code){
-            $this->success("添加成功",'/songs');
-        }else{
-            $this->error("添加失败");
+            $code=Db::execute("insert into song values(seq_songId.NEXTVAL,:SNAME,:SRELEASE,:SRECORD,
+            :SLYRICS,:SCOMPOSITION,:SINGER,:SLENGTH,:STYLENO)",$data);
+
+            // if($code){
+            //     $this->success("添加成功",'/songs');
+            // }else{
+            //     $this->error("添加失败");
+            // }
+
+        }catch(\Exception $e){
+            //dump($e->getMessage());
+            //ORA-02291：外键约束|ORA-01438：超出数值范围|ORA-01861：格式不匹配
+            if(strpos($e->getMessage(),"ORA-02291") 
+                 ||strpos($e->getMessage(),"ORA-01438")){
+                  $this->error("没有该曲风编号 请先添加该曲风");
+            }else if(strpos($e->getMessage(),"ORA-01861")){
+                $this->error("输入格式有误 请检测是否输错");
+            }else{
+                $this->success("添加成功",'/songs');
+            }
         }
     }
 
